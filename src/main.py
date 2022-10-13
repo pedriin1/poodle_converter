@@ -42,7 +42,6 @@ def generate_bulk_string(json_data, opensearch_index_name, name, position ):
     f1 = lambda x: x.update({"upload_id": upload_id}) or x
     f2 = lambda x: {"index" : { "_index": opensearch_index_name, "_id" : hash_function(str(x)) }}
     bulk_data = [f(x) for x in json_data for f in (f2,f1)]
-  
     
     return '\n'.join([json.dumps(line) for line in bulk_data]) + '\n'
 
@@ -95,7 +94,7 @@ def generate_txt_files(file_path, file_size_in_mb, output_dir, opensearch_index_
 
 
 def main():
-    generate_txt_files("/Users/pedromaia/Desktop/s3-to-opensearch/resources/book_rating.json", 3, "/Users/pedromaia/Desktop/s3-to-opensearch/data_generated", "pedro")
+    generate_txt_files("/Users/pedromaia/Desktop/Projects/poodle_converter/resources/book_rating.json", 3, "/Users/pedromaia/Desktop/Projects/poodle_converter/data", "pedro")
 
 
 if __name__ == "__main__":
